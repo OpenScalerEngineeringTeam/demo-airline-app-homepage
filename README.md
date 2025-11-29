@@ -23,10 +23,14 @@ cd airline-homepage
 cp -r src /var/www/airliner-demo
 ```
 
-4. Copy nginx configuration file to the `/etc/nginx/sites-available/`
+4. Copy nginx configuration file to the `/etc/nginx/sites-available/` and disable the default nginx configuration so it doesn't conflict with our own (on port `80`).
 
 ```bash
 cp nginx.conf /etc/nginx/sites-available/airliner-demo
+# disable the default nginx configuration (still available in /etc/nginx/sites-available/default if you need to enable it again)
+# if you need to enable it again, simply symlink it with:
+#   ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+rm /etc/nginx/sites-enabled/default
 ```
 
 5. Enable the nginx configuration
